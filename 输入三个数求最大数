@@ -1,0 +1,13 @@
+#include<stdio.h>
+int main()
+{
+    int a[3],max;
+    scanf("%d%d%d", &a[0],&a[1], &a[2]);
+    for(int i=0;i<=sizeof(a)/sizeof(int)-1;i++){
+        max=a[0];
+        if(max<a[i])
+        max=a[i];
+    }
+    printf("%d\n",max);
+    return 0;
+}
