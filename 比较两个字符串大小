@@ -1,0 +1,13 @@
+import java.util.Scanner;
+import java.util.*;
+import java.io.*;
+public class Main {
+	public static void main(String[] args) {     
+				Scanner scanner = new Scanner(System.in);
+		int i;
+		String str1=new String();
+		String str2=new String();
+		str1=scanner.nextLine();
+		str2=scanner.nextLine();
+		System.out.println(str1.equals(str2));	}
+}
