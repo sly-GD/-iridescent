@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+  Scanner scanner = new Scanner(System.in);
+		int array[]=new int[10];
+		for(i=0;i<array.length;i++){
+		    array[i]=scanner.nextInt();
+		}
+		for(i=0;i<array.length/2;i++){
+		    int a;
+		    a=array[i];
+		    array[i]=array[array.length-i-1];
+		    array[array.length-i-1]=a;
+		}
+		for(i=0;i<array.length;i++){
+		    System.out.print(array[i]+" ");
+		}
+	}
+}
