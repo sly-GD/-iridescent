@@ -1,0 +1,21 @@
+import java.util.Scanner;
+import java.util.*;
+import java.io.*;
+public class Main {
+	public static void main(String[] args) {
+        Map<String,String> ha=new HashMap<String,String>();
+        ha.put("one","zhangsan");
+        ha.put("two","lisi");
+        ha.put("three","wangwu");
+        ha.put("four","xieliu");
+        
+        TreeMap<String,String> map=new TreeMAp<String,String>(ha);
+        Set mapping=map.entrySet();
+        for(Iterator i=mapping.Iterator();i.hasNext();)
+        {
+            Map.Entry<String,String> me=(Map<String,String>)i.next();
+            System.out.println(me.getKey());
+            System.out.println(((String)me.getValue())+"\r");
+        }
+        	}
+}
