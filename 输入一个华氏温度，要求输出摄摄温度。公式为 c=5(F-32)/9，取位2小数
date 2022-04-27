@@ -1,0 +1,14 @@
+import java.util.Scanner;
+import java.util.Formatter;
+public class Main {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		while (scanner.hasNext()) {
+			double F = scanner.nextDouble();
+			double  c=5*(F-32)/9;
+		 
+		     
+			System.out.println(String.format("c=%.2f",c));
+		}
+	}/*String.format("c=%.2f", c)*/
+}
