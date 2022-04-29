@@ -1,0 +1,14 @@
+#include"stdio.h"
+typedef float DataType;
+//typedef char DataType;
+DataType Max(DataType x1, DataType x2) {
+	if (x1 <= x2)return x2;
+	else return x1;
+}
+
+void main() {
+	DataType max,t1, t2;
+	scanf("%f%f",&t1,&t2);
+	max = Max(t1, t2);
+	printf("max=%f\n",max);
+}
