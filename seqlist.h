@@ -8,26 +8,26 @@ typedef struct {
 
 }seqlist;
 
-//³õÊ¼»¯Ë³Ğò±í
+//åˆå§‹åŒ–é¡ºåºè¡¨
 void ListInitiate(seqlist* L) {
 	L->size = 0;
 }
 
-//Çóµ±Ç°ÔªËØÊı
+//æ±‚å½“å‰å…ƒç´ æ•°
 int ListLength(seqlist l) {
 	return l.size;
 }
 
-//²åÈëÔªËØ£¨³É¹¦·µ»Ø1£¬Ê§°Ü·µ»Ø 0£©
+//æ’å…¥å…ƒç´ ï¼ˆæˆåŠŸè¿”å›1ï¼Œå¤±è´¥è¿”å› 0ï¼‰
 int ListInsert(seqlist* l, int i, DataType x) {
 	int j;
 	if (l->size > maxsize)
 	{
-		printf("Ë³Ğò±íÒÑÂú£¡\n");
+		printf("é¡ºåºè¡¨å·²æ»¡ï¼\n");
 		return 0;
 	}
 	else if (i<0 || i>l->size) {
-		printf("²ÎÊı i ²»ºÏ·¨£¡");
+		printf("å‚æ•° i ä¸åˆæ³•ï¼");
 			return 0;
 	}
 	else {
@@ -41,15 +41,15 @@ int ListInsert(seqlist* l, int i, DataType x) {
 	}
 }
 
-//É¾³ıÔªËØ£¬±£´æµ½x£¨³É¹¦·µ»Ø1£¬Ê§°Ü·µ»Ø0£©
+//åˆ é™¤å…ƒç´ ï¼Œä¿å­˜åˆ°xï¼ˆæˆåŠŸè¿”å›1ï¼Œå¤±è´¥è¿”å›0ï¼‰
 int ListDelete(seqlist* l, int i, DataType* x) {
 	int j;
 	if (l->size <= 0) {
-		printf("Ë³Ğò±í¿Õ£¬ÎŞÔªËØ¿ÉÉ¾£¡");
+		printf("é¡ºåºè¡¨ç©ºï¼Œæ— å…ƒç´ å¯åˆ ï¼");
 			return 0;
 	}
 	else if (i<0 || i>l->size - 1) {
-		printf("²ÎÊıi²»ºÏ·¨£¡");
+		printf("å‚æ•°iä¸åˆæ³•ï¼");
 		return 0;
 	}
 	else {
@@ -62,10 +62,10 @@ int ListDelete(seqlist* l, int i, DataType* x) {
 	}
 }
 
-//È¡³öÔªËØ£¬´æÓÚx£¨³É¹¦·µ»Ø1£¬Ê§°Ü·µ»Ø0£©
+//å–å‡ºå…ƒç´ ï¼Œå­˜äºxï¼ˆæˆåŠŸè¿”å›1ï¼Œå¤±è´¥è¿”å›0ï¼‰
 int ListGet(seqlist l, int i, DataType *x) {
 	if (i<0 || i>l.size - 1) {
-		printf("²ÎÊıi²»ºÏ·¨£¡");
+		printf("å‚æ•°iä¸åˆæ³•ï¼");
 		return 0;
 	}
 	else {
@@ -74,3 +74,40 @@ int ListGet(seqlist l, int i, DataType *x) {
 	}
 }
 
+//é¡ºåºè¡¨é€†ç½®ï¼ˆå€ŸåŠ©ä¸­é—´å˜é‡ï¼‰ï¼ˆæˆåŠŸè¿”å›1ï¼Œå¤±è´¥è¿”å›0ï¼‰
+int ListReverse(seqlist* l) {
+	int i;
+	DataType temp;
+	if (l->size <= 1) {
+		printf("é¡ºåºè¡¨ä¸ºç©ºï¼\n");
+		return 0;
+	}
+	else {
+		for (i = 0; i <= ListLength(*l) / 2; i++) {
+			temp = l->list[l->size - 1 - i];
+			l->list[l->size - 1 - i] = l->list[i];
+			l->list[i] = temp;
+
+		}
+		return 1;
+	}
+}
+
+//å°±åœ°é€†ç½®ï¼ˆä½¿ç”¨è¡¨ä¸­å¤šä½™æœªç”¨çš„ç©ºé—´ï¼Œè‡³å°‘ä¸€ä¸ªï¼‰ï¼ˆæˆåŠŸè¿”å›1ï¼Œå¤±è´¥è¿”å›0ï¼‰
+int ListReverseLocally(seqlist* l) {
+	int i,j;
+	if(l->size == maxsize) {
+		printf("ç©ºé—´ä¸è¶³ï¼Œæ— æ³•é€†ç½®ï¼\n");
+		return 0;
+	}
+	else {
+		for (i = 0; i < l->size; i++) {
+			for (j = l->size;j>=i;j--) {
+				l->list[j] = l->list[j-1 ];
+			}
+			l->list[i] = l->list[l->size];
+		}
+
+		return 1;
+	}
+}
