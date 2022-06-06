@@ -6,12 +6,12 @@ typedef struct {
 }DString;
 
 //初始化（动态存储）
-void Initiate(DString* S, int max,char* string) {
+void Initiate(DString* S, int max1,char* string) {
 	int i;
-	S->str = (char*)malloc(sizeof(char) * max);
-	S->MaxLength = max;
+	S->str = (char*)malloc(sizeof(char) * max1);
+	S->MaxLength = max1;
 	S->length = strlen(string);
-	for (i = 0; i < S->length; i++) {
+	for (i = 0; i <S->length; i++) {
 		S->str[i] = string[i];
 	}
 }
@@ -23,17 +23,20 @@ int Insert(DString* S, int pos, DString T) {
 		printf("参数位置错误！\n");
 		return 0;
 	}
-	if (S->MaxLength < S->length + T.length) {
-		realloc(S->str, (S->length + T.length) * sizeof(char));//空间不足重新申请
-		S->MaxLength = S->length + T.length;
+	else {
+		if (S->MaxLength < S->length + T.length) {
+			realloc(S->str ,(S->length + T.length) * sizeof(char));//空间不足重新申请
+			S->MaxLength = S->length + T.length;
+		}
+		for (i = S->length - 1; i >= pos; i--) {//将pos后依次后移
+			S->str[i + T.length] = S->str[i];
+		}
+		for (i = 0; i < T.length; i++) {
+			S->str[pos + i] = T.str[i];
+		}
+		S->length += T.length;
+		return 1;
 	}
-	for (i = S->length - 1; i <= pos; i--) {//将pos后依次后移
-		S->str[i + T.length] = S->str[i];
-	}
-	for (i = 0; i < T.length; i++) {
-		S->str[pos + i] = T.str[i];
-	}S->length += T.length;
-	return 1;
 }
 
 //删除字串--从pos位置删除len长度的字符串（成功返回1.失败返回0）
@@ -51,7 +54,7 @@ int Delete(DString* S, int pos, int len) {
 		for (i = pos + len; i <= S->length - 1; i++) {
 			S->str[i - len] = S->str[i];	
 		}
-		S->length = S->length - len-1;
+		S->length = S->length - len;
 		return 1;
 	}
 
